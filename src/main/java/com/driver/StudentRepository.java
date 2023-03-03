@@ -29,6 +29,7 @@ public class StudentRepository {
                 list = teacherstudentDb.get(teacher);
             }
             list.add(studentsDb.get(student));
+            teachersDb.get(teacher).setNumberOfStudents(list.size());
             teacherstudentDb.put(teacher,list);
         }
     }
