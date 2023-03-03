@@ -35,13 +35,15 @@ public class StudentRepository {
     }
 
     public Student getStudentByName(String name) {
-        if(!studentsDb.containsKey(name)) return null;
-        return studentsDb.get(name);
+        if(studentsDb.containsKey(name))
+            return studentsDb.get(name);
+        return null;
     }
 
     public Teacher getTeacherByName(String name) {
-        if(!teachersDb.containsKey(name)) return null;
-        return teachersDb.get(name);
+        if(teachersDb.containsKey(name))
+            return teachersDb.get(name);
+        return null;
     }
 
     public List<String> getStudentsByTeacherName(String teacher) {
@@ -63,8 +65,10 @@ public class StudentRepository {
     }
 
     public void deleteTeacherByName(String teacher) {
-        teachersDb.remove(teacher);
-        teacherstudentDb.remove(teacher);
+        if(teachersDb.containsKey(teacher))
+            teachersDb.remove(teacher);
+        if(teacherstudentDb.containsKey(teacher))
+            teacherstudentDb.remove(teacher);
     }
 
     public void deleteAllTeachers() {
